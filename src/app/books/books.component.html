@@ -1,0 +1,28 @@
+<div>
+    <h1>Book Manager</h1>
+    <!-- Add Book Form -->
+    <form [formGroup]="bookForm" (ngSubmit)="onAddBook()">
+      <label>
+        Title:
+        <input formControlName="title" />
+      </label>
+      <label>
+        Author:
+        <input formControlName="author" />
+      </label>
+      <label>
+        Published date:
+        <input formControlName="date" />
+      </label>
+      <button type="submit" [disabled]="bookForm.invalid">Add Book</button>
+    </form>
+
+    <!-- Book List -->
+    <h2>Book List</h2>
+    <ul>
+      <li *ngFor="let book of books">
+        {{ book.title }} by {{ book.author }}
+        <button (click)="onDeleteBook(book.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
